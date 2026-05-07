@@ -6,14 +6,18 @@ export type Currency = "USD" | "NGN";
 export const EXCHANGE_RATE = 1500;
 
 /**
- * Formats the product price into either US Dollars ($) or Nigerian Naira (₦).
+ * Formats a price into either US Dollars ($) or Nigerian Naira (₦).
  * Accepts either a Product object or a direct number.
+ * Pass the live exchangeRate from CurrencyContext; falls back to the static EXCHANGE_RATE.
  */
-export function getProductPrice(productOrPrice: Product | number, currency: Currency = "USD"): string {
+export function getProductPrice(
+  productOrPrice: Product | number,
+  currency: Currency = "USD",
+  exchangeRate: number = EXCHANGE_RATE,
+): string {
   const price = typeof productOrPrice === "number" ? productOrPrice : productOrPrice.price;
-  
   if (currency === "NGN") {
-    return `₦${(price * EXCHANGE_RATE).toLocaleString()}`;
+    return `₦${(price * exchangeRate).toLocaleString()}`;
   }
   return `$${price.toLocaleString()}`;
 }

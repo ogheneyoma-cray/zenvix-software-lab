@@ -12,9 +12,10 @@ export default function DeliveryPolicyPage() {
         className="max-w-3xl mx-auto"
       >
         <p className="text-brand-blue tracking-[0.3em] uppercase text-xs mb-4">Legal</p>
-        <h1 className="font-display text-5xl md:text-6xl font-bold mb-10 leading-tight">
+        <h1 className="font-display text-5xl md:text-6xl font-bold mb-4 leading-tight">
           Digital Delivery Policy
         </h1>
+        <p className="text-brand-gray text-sm mb-10"><strong>Effective Date:</strong> 7 May 2026</p>
         <p className="text-brand-gray text-lg leading-relaxed mb-8">
           As a software development agency, Arch HD does not ship physical products.
         </p>

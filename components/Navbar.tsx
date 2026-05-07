@@ -1,9 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { Menu, X, ShoppingCart } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import { Menu, X, ShoppingCart, ChevronDown } from "lucide-react";
 import { useCart } from "@/context/CartContext";
+import { useCurrency } from "@/context/CurrencyContext";
+import type { Currency } from "@/lib/currency";
 import { motion, AnimatePresence } from "framer-motion";
 
 const links = [
@@ -14,9 +16,77 @@ const links = [
   { href: "/contact", label: "Contact" },
 ];
 
+const CURRENCIES: { code: Currency; label: string; symbol: string; flag: string }[] = [
+  { code: "USD", label: "US Dollar", symbol: "$", flag: "🇺🇸" },
+  { code: "NGN", label: "Nigerian Naira", symbol: "₦", flag: "🇳🇬" },
+];
+
+function CurrencyToggle() {
+  const { currency, setCurrency, exchangeRate, rateLoading } = useCurrency();
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const active = CURRENCIES.find((c) => c.code === currency)!;
+
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
+  return (
+    <div className="relative" ref={ref}>
+      <button
+        onClick={() => setOpen((v) => !v)}
+        className="flex items-center gap-1.5 text-brand-gray hover:text-white transition-colors text-xs font-bold uppercase tracking-widest border border-white/10 px-3 py-1.5 rounded-full hover:border-brand-blue/50"
+        aria-label="Select currency"
+      >
+        <span>{active.flag}</span>
+        <span>{active.symbol} {active.code}</span>
+        <ChevronDown size={11} className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
+      </button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -6, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -6, scale: 0.97 }}
+            transition={{ duration: 0.15 }}
+            className="absolute top-full mt-2 right-0 bg-[#111827] border border-white/10 rounded-xl p-3 min-w-[180px] shadow-2xl z-50"
+          >
+            <p className="text-brand-gray text-xs pb-2 mb-2 border-b border-white/10 leading-snug">
+              {rateLoading
+                ? "Fetching live rate…"
+                : `1 USD = ₦${exchangeRate.toLocaleString()}`}
+            </p>
+            {CURRENCIES.map((c) => (
+              <button
+                key={c.code}
+                onClick={() => { setCurrency(c.code); setOpen(false); }}
+                className={`w-full text-left px-2.5 py-2 rounded-lg text-sm flex items-center gap-2.5 transition-colors ${
+                  currency === c.code
+                    ? "text-brand-blue bg-brand-blue/10 font-bold"
+                    : "text-brand-gray hover:text-white hover:bg-white/5"
+                }`}
+              >
+                <span>{c.flag}</span>
+                <span>{c.symbol} {c.code}</span>
+                <span className="ml-auto text-xs text-brand-gray/60">{c.label}</span>
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const { totalItems } = useCart();
+  const { currency, setCurrency, exchangeRate, rateLoading } = useCurrency();
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-brand-dark/95 backdrop-blur-md border-b border-white/10">
@@ -40,7 +110,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6">
           {links.map((l) => (
             <Link
               key={l.href}
@@ -50,6 +120,8 @@ export default function Navbar() {
               {l.label}
             </Link>
           ))}
+
+          <CurrencyToggle />
 
           {/* Cart Icon */}
           <Link href="/cart" className="relative text-brand-gray hover:text-brand-blue transition-colors">
@@ -70,7 +142,7 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Toggle */}
-        <div className="md:hidden flex items-center gap-4">
+        <div className="md:hidden flex items-center gap-3">
           <Link href="/cart" className="relative text-brand-gray">
             <ShoppingCart size={22} />
             {totalItems > 0 && (
@@ -110,6 +182,29 @@ export default function Navbar() {
                   {l.label}
                 </Link>
               ))}
+
+              {/* Mobile currency switcher */}
+              <div className="pt-4 border-t border-white/10">
+                <p className="text-xs text-brand-gray uppercase tracking-widest mb-3">
+                  Currency &nbsp;·&nbsp;{" "}
+                  {rateLoading ? "loading…" : `1 USD = ₦${exchangeRate.toLocaleString()}`}
+                </p>
+                <div className="flex gap-2">
+                  {CURRENCIES.map((c) => (
+                    <button
+                      key={c.code}
+                      onClick={() => setCurrency(c.code)}
+                      className={`flex-1 py-2 rounded-lg text-sm font-bold transition-colors border ${
+                        currency === c.code
+                          ? "border-brand-blue text-brand-blue bg-brand-blue/10"
+                          : "border-white/10 text-brand-gray hover:border-white/30"
+                      }`}
+                    >
+                      {c.flag} {c.symbol} {c.code}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
           </motion.div>
         )}

@@ -1,11 +1,14 @@
 "use client";
 
 import { useCart } from "@/context/CartContext";
+import { useCurrency } from "@/context/CurrencyContext";
+import { getProductPrice } from "@/lib/currency";
 import Link from "next/link";
 import { Trash2, ShoppingCart, ArrowRight } from "lucide-react";
 
 export default function CartPage() {
   const { cart, removeFromCart, clearCart, totalPrice, totalItems } = useCart();
+  const { currency, exchangeRate } = useCurrency();
 
   if (cart.length === 0) {
     return (
@@ -48,7 +51,7 @@ export default function CartPage() {
                 <p className="text-white/20 text-xs font-mono mt-1">{item.sku}</p>
               </div>
               <div className="flex items-center gap-6">
-                <span className="font-display text-xl font-bold">${item.price.toLocaleString()}</span>
+                <span className="font-display text-xl font-bold">{getProductPrice(item, currency, exchangeRate)}</span>
                 <button onClick={() => removeFromCart(item.id)}
                   className="text-white/20 hover:text-red-400 transition-colors">
                   <Trash2 size={18} />
@@ -65,14 +68,14 @@ export default function CartPage() {
             {cart.map((item) => (
               <div key={item.id} className="flex justify-between text-sm text-white/40">
                 <span>{item.name}</span>
-                <span>${item.price.toLocaleString()}</span>
+                <span>{getProductPrice(item, currency, exchangeRate)}</span>
               </div>
             ))}
           </div>
           <div className="border-t border-zx-border pt-4 flex justify-between items-center mb-8">
             <span className="font-display text-lg font-bold">Total Investment</span>
             <span className="font-display text-3xl font-bold text-zx-cyan">
-              ${totalPrice.toLocaleString()}
+              {getProductPrice(totalPrice, currency, exchangeRate)}
             </span>
           </div>
           <Link href="/contact"

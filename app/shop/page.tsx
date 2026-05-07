@@ -3,12 +3,15 @@
 import { useState } from "react";
 import { products } from "@/lib/products";
 import { useCart } from "@/context/CartContext";
+import { useCurrency } from "@/context/CurrencyContext";
+import { getProductPrice } from "@/lib/currency";
 import { ShoppingCart, Check } from "lucide-react";
 
 const categories = ["All", "Web Development", "Custom Software", "Maintenance", "Consulting", "Digital Marketing", "Retainer", "Plugins & Scripts"];
 
 export default function ShopPage() {
   const { addToCart, cart } = useCart();
+  const { currency, exchangeRate } = useCurrency();
   const [active, setActive] = useState("All");
   const [added, setAdded] = useState<string | null>(null);
 
@@ -74,7 +77,7 @@ export default function ShopPage() {
                 <p className="text-white/40 text-sm leading-relaxed flex-1">{product.shortDesc}</p>
                 <div className="flex items-center justify-between pt-2 border-t border-zx-border">
                   <span className="font-display text-2xl font-bold text-white">
-                    ${product.price.toLocaleString()}
+                    {getProductPrice(product, currency, exchangeRate)}
                   </span>
                   <button onClick={() => handleAdd(product)}
                     className={`flex items-center gap-2 px-4 py-2 text-xs font-bold font-display tracking-wide transition-all ${

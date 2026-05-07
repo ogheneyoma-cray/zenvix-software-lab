@@ -2,20 +2,18 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { 
-  Code, 
-  ShoppingCart, 
-  Database, 
-  Shield, 
-  Zap, 
+import {
+  Code,
+  ShoppingCart,
+  Database,
+  Shield,
   Cloud,
   Layout,
   Search,
   RefreshCw,
-  Server,
-  Smartphone,
-  GitBranch
 } from "lucide-react";
+import { useCurrency } from "@/context/CurrencyContext";
+import { getProductPrice } from "@/lib/currency";
 
 const services = [
   {
@@ -23,60 +21,70 @@ const services = [
     title: "Web Application Development",
     description: "Need a custom portal, CRM, or SaaS product? We build robust, cloud-native web apps that scale with your business.",
     features: ["Custom CRMs", "SaaS Platforms", "Client Portals", "Admin Dashboards"],
-    price: "Starting at $5,000"
+    startingPrice: 5000,
+    priceSuffix: "",
   },
   {
     icon: <ShoppingCart size={32} />,
     title: "E-Commerce Development",
     description: "Maximize your online sales with custom WooCommerce, Shopify, or headless commerce builds that prioritize speed and conversion.",
     features: ["WooCommerce", "Shopify", "Headless Commerce", "Payment Integration"],
-    price: "Starting at $2,800"
+    startingPrice: 2800,
+    priceSuffix: "",
   },
   {
     icon: <Layout size={32} />,
     title: "UI/UX Design",
     description: "Beautiful software is useless if people can't use it. Our design team creates intuitive, user-centric interfaces that engage and convert.",
     features: ["User Research", "Wireframing", "Prototyping", "Usability Testing"],
-    price: "Starting at $1,200"
+    startingPrice: 1200,
+    priceSuffix: "",
   },
   {
     icon: <Database size={32} />,
     title: "API & Integrations",
     description: "Connect your tools seamlessly. We build robust integrations that make your data flow across your entire business ecosystem.",
     features: ["REST APIs", "Webhooks", "Third-Party Integrations", "Data Sync"],
-    price: "Starting at $850"
+    startingPrice: 850,
+    priceSuffix: "",
   },
   {
     icon: <Shield size={32} />,
     title: "Maintenance & Support",
     description: "Keep your digital assets secure, fast, and optimized with our dedicated maintenance plans and priority support.",
     features: ["24/7 Monitoring", "Security Patches", "Performance Optimization", "Backup Management"],
-    price: "Starting at $150/month"
+    startingPrice: 150,
+    priceSuffix: "/month",
   },
   {
     icon: <Cloud size={32} />,
     title: "Cloud Hosting & DevOps",
     description: "Deploy your applications to secure, scalable cloud environments with our expert DevOps services.",
     features: ["AWS Deployment", "Google Cloud", "Azure", "CI/CD Pipelines"],
-    price: "Starting at $500"
+    startingPrice: 500,
+    priceSuffix: "",
   },
   {
     icon: <Search size={32} />,
     title: "SEO & Technical Optimization",
     description: "Get found online with our technical SEO services and performance optimization strategies.",
     features: ["Site Audits", "Speed Optimization", "Meta Tag Structuring", "Analytics Setup"],
-    price: "Starting at $400"
+    startingPrice: 400,
+    priceSuffix: "",
   },
   {
     icon: <RefreshCw size={32} />,
     title: "Website Migration",
     description: "Move your site to better hosting with zero downtime. We handle everything from DNS to database migration.",
     features: ["Server Migration", "Platform Migration", "Zero Downtime", "Post-Migration Testing"],
-    price: "Starting at $300"
-  }
+    startingPrice: 300,
+    priceSuffix: "",
+  },
 ];
 
 export default function ServicesPage() {
+  const { currency, exchangeRate } = useCurrency();
+
   return (
     <main className="bg-brand-dark text-white min-h-screen pt-32 pb-24 px-6 font-body">
       <div className="max-w-6xl mx-auto">
@@ -124,7 +132,9 @@ export default function ServicesPage() {
                   </span>
                 ))}
               </div>
-              <p className="text-sm text-brand-blue font-semibold mt-4">{service.price}</p>
+              <p className="text-sm text-brand-blue font-semibold mt-4">
+                Starting at {getProductPrice(service.startingPrice, currency, exchangeRate)}{service.priceSuffix}
+              </p>
             </motion.div>
           ))}
         </div>

@@ -16,7 +16,7 @@ export default function PrivacyPolicyPage() {
           Privacy Policy
         </h1>
         <p className="text-brand-gray text-lg mb-8">
-          <strong>Effective Date:</strong> [Insert Date]
+          <strong>Effective Date:</strong> 7 May 2026
         </p>
         <p className="text-brand-gray text-lg leading-relaxed mb-8">
           At Arch HD, your privacy is paramount. This policy explains how we collect, use, and protect your data.
