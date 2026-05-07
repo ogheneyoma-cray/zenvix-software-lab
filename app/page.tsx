@@ -81,7 +81,7 @@ export default function HomePage() {
           className="relative z-10 flex flex-col items-center"
         >
           <p className="text-brand-blue tracking-[0.3em] uppercase text-xs mb-6 font-body">
-            Zenvix Software Labs
+            Arch HD
           </p>
           <h1 className="font-display text-5xl md:text-7xl font-bold leading-tight mb-6 max-w-4xl">
             Engineering the<br />
@@ -90,7 +90,7 @@ export default function HomePage() {
             </span>
           </h1>
           <p className="text-brand-gray max-w-2xl text-lg mb-10 leading-relaxed">
-            Zenvix Software Labs builds scalable software, high-performance websites, and custom digital solutions that empower your business to grow without limits.
+            Arch HD builds scalable software, high-performance websites, and custom digital solutions that empower your business to grow without limits.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
@@ -122,7 +122,7 @@ export default function HomePage() {
           <span className="bg-linear-to-r from-brand-blue to-brand-purple bg-clip-text text-transparent">Growth</span>
         </h2>
         <p className="text-brand-gray text-lg leading-relaxed">
-          At Zenvix Software Labs, we don't just write code; we solve business problems. We are a team of dedicated developers, designers, and strategists obsessed with delivering clean architecture, intuitive user experiences, and software that scales as fast as your ambitions.
+          At Arch HD, we don't just write code; we solve business problems. We are a team of dedicated developers, designers, and strategists obsessed with delivering clean architecture, intuitive user experiences, and software that scales as fast as your ambitions.
         </p>
       </motion.section>
 
@@ -173,7 +173,7 @@ export default function HomePage() {
           variants={fadeInUp}
           className="font-display text-4xl font-bold text-center mb-16"
         >
-          The <span className="text-brand-blue">Zenvix Advantage</span>
+          The <span className="text-brand-blue">Arch HD Advantage</span>
         </motion.h2>
         <motion.div 
           variants={staggerContainer}

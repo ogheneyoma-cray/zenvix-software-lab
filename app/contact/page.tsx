@@ -56,11 +56,56 @@ export default function ContactPage() {
           </button>
         </form>
 
-        <div className="mt-12 space-y-3 text-brand-gray text-sm">
-          <p>✉ hello@zenvixlabs.com</p>
-          <p>📞 (555) 867-5309</p>
-          <p>🕐 Monday – Friday, 9:00 AM – 6:00 PM EST</p>
-          <p>🌐 Available for remote & onsite consultations</p>
+        <div className="mt-12 border border-white/10 rounded-2xl p-8 bg-white/2 space-y-5">
+          <h2 className="font-display text-xl font-bold text-white mb-2">Contact Details</h2>
+
+          <div className="flex items-start gap-3">
+            <span className="text-brand-blue mt-0.5">✉</span>
+            <div>
+              <p className="text-xs text-brand-gray uppercase tracking-widest mb-1">Email</p>
+              <a href="mailto:support@archhd.com" className="text-white hover:text-brand-blue transition-colors">
+                support@archhd.com
+              </a>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-3">
+            <span className="text-brand-blue mt-0.5">📞</span>
+            <div>
+              <p className="text-xs text-brand-gray uppercase tracking-widest mb-1">Phone</p>
+              <a href="tel:+2348165629781" className="text-white hover:text-brand-blue transition-colors">
+                08165629781
+              </a>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-3">
+            <span className="text-brand-blue mt-0.5">📍</span>
+            <div>
+              <p className="text-xs text-brand-gray uppercase tracking-widest mb-1">Address</p>
+              <address className="text-white not-italic leading-relaxed">
+                4, Aderibige Street<br />
+                Ikate, Lekki<br />
+                Lagos, Nigeria
+              </address>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-3">
+            <span className="text-brand-blue mt-0.5">🕐</span>
+            <div>
+              <p className="text-xs text-brand-gray uppercase tracking-widest mb-1">Hours</p>
+              <p className="text-white">Monday – Friday, 9:00 AM – 6:00 PM WAT</p>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-3">
+            <span className="text-brand-blue mt-0.5">🌐</span>
+            <div>
+              <p className="text-xs text-brand-gray uppercase tracking-widest mb-1">Availability</p>
+              <p className="text-white">Remote &amp; onsite consultations</p>
+            </div>
+          </div>
         </div>
       </motion.div>
     </main>

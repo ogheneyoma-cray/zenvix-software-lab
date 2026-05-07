@@ -17,8 +17,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Zenvix Software Labs | Scalable Software & Web Development",
+  title: "Arch HD | Scalable Software & Web Development",
   description: "Build scalable software, high-performance websites, and custom digital solutions that empower your business to grow without limits.",
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({

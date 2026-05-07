@@ -102,7 +102,7 @@ export const products: Product[] = [
   {
     id: "11",
     sku: "ZSL-PLG-011",
-    name: "Zenvix Custom Form Builder",
+    name: "Arch HD Custom Form Builder",
     shortDesc: "Premium form building plugin with webhook support.",
     fullDesc: "Our proprietary, lightweight form builder plugin for WordPress. Build complex, multi-step forms with drag-and-drop ease. Includes native webhook support to send lead data instantly to any CRM.",
     price: 49,

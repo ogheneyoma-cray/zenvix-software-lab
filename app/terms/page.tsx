@@ -16,7 +16,7 @@ export default function DeliveryPolicyPage() {
           Digital Delivery Policy
         </h1>
         <p className="text-brand-gray text-lg leading-relaxed mb-8">
-          As a software development agency, Zenvix Software Labs does not ship physical products.
+          As a software development agency, Arch HD does not ship physical products.
         </p>
         
         <div className="space-y-8">

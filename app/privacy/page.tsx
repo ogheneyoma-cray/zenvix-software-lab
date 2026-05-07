@@ -19,7 +19,7 @@ export default function PrivacyPolicyPage() {
           <strong>Effective Date:</strong> [Insert Date]
         </p>
         <p className="text-brand-gray text-lg leading-relaxed mb-8">
-          At Zenvix Software Labs, your privacy is paramount. This policy explains how we collect, use, and protect your data.
+          At Arch HD, your privacy is paramount. This policy explains how we collect, use, and protect your data.
         </p>
         
         <div className="space-y-8">

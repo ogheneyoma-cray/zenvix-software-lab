@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, X, ShoppingCart } from "lucide-react";
@@ -25,13 +24,19 @@ export default function Navbar() {
 
         {/* LOGO */}
         <Link href="/" className="flex items-center gap-2">
-          <Image 
-            src="/logo.png" 
-            alt="Zenvix Software Labs" 
-            width={150} 
-            height={40} 
-            className="object-contain"
-          />
+          <svg width="144" height="36" viewBox="0 0 144 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Arch HD">
+            <defs>
+              <linearGradient id="archGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#3B82F6"/>
+                <stop offset="100%" stopColor="#8B5CF6"/>
+              </linearGradient>
+            </defs>
+            <rect x="2" y="16" width="5" height="18" rx="2.5" fill="#3B82F6"/>
+            <rect x="29" y="16" width="5" height="18" rx="2.5" fill="#8B5CF6"/>
+            <path d="M4.5 22 C4.5 8 9 2 18 2 C27 2 31.5 8 31.5 22" stroke="url(#archGrad)" strokeWidth="5" strokeLinecap="round" fill="none"/>
+            <text x="46" y="27" fontFamily="'Space Grotesk', system-ui, sans-serif" fontSize="20" fontWeight="700" fill="white" letterSpacing="1">ARCH</text>
+            <text x="108" y="27" fontFamily="'Space Grotesk', system-ui, sans-serif" fontSize="20" fontWeight="700" fill="url(#archGrad)" letterSpacing="1">HD</text>
+          </svg>
         </Link>
 
         {/* Desktop Nav */}

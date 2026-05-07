@@ -16,7 +16,7 @@ export default function AboutPage() {
           Engineering Excellence, Delivered.
         </h1>
         <p className="text-brand-gray text-lg leading-relaxed mb-8">
-          Zenvix Software Labs was founded on a simple principle: technology should accelerate your business, not hold it back. Headquartered at the intersection of design and engineering, we are a digital product agency that partners with startups, scale-ups, and established enterprises to navigate the complexities of the digital landscape.
+          Arch HD was founded on a simple principle: technology should accelerate your business, not hold it back. Headquartered at the intersection of design and engineering, we are a digital product agency that partners with startups, scale-ups, and established enterprises to navigate the complexities of the digital landscape.
         </p>
         
         <h2 className="font-display text-3xl font-bold mt-12 mb-6 text-brand-blue">Our Mission</h2>
@@ -24,7 +24,7 @@ export default function AboutPage() {
           To bridge the gap between complex business challenges and elegant, scalable technological solutions. We strive to be the invisible technical engine behind our clients' greatest successes.
         </p>
         
-        <h2 className="font-display text-3xl font-bold mb-6 text-brand-blue">The Zenvix Philosophy</h2>
+        <h2 className="font-display text-3xl font-bold mb-6 text-brand-blue">The Arch HD Philosophy</h2>
         <div className="space-y-6">
           <div>
             <h3 className="font-display text-xl font-bold mb-2">Quality over Quantity</h3>
