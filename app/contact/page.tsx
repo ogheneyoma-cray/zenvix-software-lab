@@ -13,7 +13,7 @@ export default function ContactPage() {
       >
         <p className="text-brand-blue tracking-[0.3em] uppercase text-xs mb-4">Get In Touch</p>
         <h1 className="font-display text-5xl font-bold mb-6">
-          Let's Engineer Your Success
+          Let`s Engineer Your Success
         </h1>
         <p className="text-brand-gray mb-10 leading-relaxed">
           Ready to bring your digital vision to life? Whether you need a simple website or a complex web application, our team is ready to help you scale.

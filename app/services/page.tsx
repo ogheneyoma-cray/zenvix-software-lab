@@ -159,7 +159,7 @@ export default function ServicesPage() {
             Ready to Build Something Extraordinary?
           </h2>
           <p className="text-brand-gray mb-8 max-w-xl mx-auto">
-            Let's discuss your project and find the perfect solution for your needs.
+            Let`s discuss your project and find the perfect solution for your needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

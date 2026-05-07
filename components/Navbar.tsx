@@ -1,8 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X, ShoppingCart, Code } from "lucide-react";
+import { Menu, X, ShoppingCart } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -24,12 +25,13 @@ export default function Navbar() {
 
         {/* LOGO */}
         <Link href="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-linear-to-r from-brand-blue to-brand-purple rounded-lg flex items-center justify-center">
-            <Code size={18} className="text-white" />
-          </div>
-          <span className="font-display text-xl font-bold tracking-tight">
-            ZENVIX
-          </span>
+          <Image 
+            src="/logo.png" 
+            alt="Zenvix Software Labs" 
+            width={150} 
+            height={40} 
+            className="object-contain"
+          />
         </Link>
 
         {/* Desktop Nav */}
