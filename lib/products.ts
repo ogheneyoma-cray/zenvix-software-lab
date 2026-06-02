@@ -76,9 +76,9 @@ export const products: Product[] = [
       <rect x="10" y="10" width="180" height="120" rx="8" fill="#0F172A" stroke="#3B82F6" strokeWidth="1.5"/>
       <rect x="10" y="10" width="180" height="30" rx="8" fill="#0F172A"/>
       <rect x="10" y="30" width="180" height="10" fill="#0F172A"/>
-      <text x="20" y="28" fontFamily="monospace" fontSize="10" fill="#3B82F6">const App = () =&gt; {`{`}</text>
+      <text x="20" y="28" fontFamily="monospace" fontSize="10" fill="#3B82F6">const App = () =&gt; &#123;</text>
       <text x="28" y="42" fontFamily="monospace" fontSize="9" fill="#8B5CF6">  return &lt;Dashboard /&gt;</text>
-      <text x="20" y="56" fontFamily="monospace" fontSize="10" fill="#3B82F6">{`}`}</text>
+      <text x="20" y="56" fontFamily="monospace" fontSize="10" fill="#3B82F6">&#125;</text>
       <rect x="20" y="64" width="70" height="50" rx="4" fill="#1E293B"/>
       <rect x="26" y="70" width="58" height="4" rx="2" fill="#22C55E" opacity="0.8"/>
       <rect x="26" y="79" width="42" height="4" rx="2" fill="#475569"/>
